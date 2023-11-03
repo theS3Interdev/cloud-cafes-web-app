@@ -1,6 +1,8 @@
 import React, { ReactNode } from "react";
 import type { Metadata } from "next";
 
+import { ToastProvider } from "@/lib/providers/toast-provider";
+
 import "@/app/styles/globals.css";
 
 type Children = {
@@ -12,20 +14,18 @@ export const metadata: Metadata = {
     icon: "/logo.png",
     shortcut: "/logo/png",
   },
-  title: "Next.JS Starter Template App",
-  description:
-    "Starter template for Next.JS projects using TypeScript and Shadcn/UI.",
+  title: "Cloud Coffee House",
+  description: "Firebase, Next.JS, Tailwind CSS and Shadcn UI sample project.",
 };
 
 const RootLayout = ({ children }: Children) => {
   return (
     <html lang="en">
-      <body className="font-opensans scroll-smooth antialiased">
-        <header>Header Section</header>
-
-        <main>{children}</main>
-
-        <footer>Footer Section</footer>
+      <body className="scroll-smooth font-opensans antialiased">
+        <main>
+          <ToastProvider />
+          {children}
+        </main>
       </body>
     </html>
   );

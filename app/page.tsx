@@ -1,6 +1,8 @@
+import { Container } from "@/components/generic/container";
+
 const Home = () => {
   return (
-    <article>
+    <Container>
       <section className="py-5">
         <h1 className="font-montserrat text-4xl font-bold tracking-wide text-sky-800">
           Your settings are well configured
@@ -12,7 +14,7 @@ const Home = () => {
           distinctio nulla hic ea.
         </p>
       </section>
-    </article>
+    </Container>
   );
 };
 
