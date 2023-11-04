@@ -1,19 +1,18 @@
+import { Separator } from "@/components/ui/separator";
 import { Container } from "@/components/generic/container";
+import { CreateCoffeeHouse } from "@/components/generic/create-coffee-house";
+import { DisplayCoffeeHouse } from "@/components/generic/display-coffee-house";
 
 const Home = () => {
   return (
     <Container>
-      <section className="py-5">
-        <h1 className="font-montserrat text-4xl font-bold tracking-wide text-sky-800">
-          Your settings are well configured
-        </h1>
-        <p className="mt-5">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus,
-          cum reprehenderit. Doloremque corrupti aliquid nihil magnam impedit,
-          quisquam soluta? Expedita et dolorum quo laudantium odio esse,
-          distinctio nulla hic ea.
-        </p>
-      </section>
+      <div className="mx-auto mt-5 max-w-4xl p-5">
+        <CreateCoffeeHouse />
+
+        <Separator className="my-4" />
+
+        <DisplayCoffeeHouse />
+      </div>
     </Container>
   );
 };

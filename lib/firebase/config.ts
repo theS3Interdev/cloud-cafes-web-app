@@ -1,6 +1,15 @@
 /* import the functions needed from the SDKs */
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  getFirestore,
+  orderBy,
+  query,
+} from "firebase/firestore";
 
 /* firebase configuration object containing keys and identifiers */
 const firebaseConfig = {
@@ -20,4 +29,4 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 /* export functions */
-export { db };
+export { addDoc, collection, db, deleteDoc, doc, getDocs, orderBy, query };
