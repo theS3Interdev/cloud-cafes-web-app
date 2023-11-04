@@ -1,7 +1,11 @@
 import React, { ReactNode } from "react";
 import type { Metadata } from "next";
 
+import { TanstackProvider } from "@/lib/providers/tanstack-provider";
+import { ThemeProvider } from "@/lib/providers/theme-provider";
 import { ToastProvider } from "@/lib/providers/toast-provider";
+
+import { NavigationBar } from "@/components/index";
 
 import "@/app/styles/globals.css";
 
@@ -22,10 +26,20 @@ const RootLayout = ({ children }: Children) => {
   return (
     <html lang="en">
       <body className="scroll-smooth font-opensans antialiased">
-        <main>
-          <ToastProvider />
-          {children}
-        </main>
+        <TanstackProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NavigationBar />
+            <main>
+              <ToastProvider />
+              {children}
+            </main>
+          </ThemeProvider>
+        </TanstackProvider>
       </body>
     </html>
   );
