@@ -13,7 +13,7 @@ export async function POST(req: Request) {
       city: city,
     });
 
-    return NextResponse.json(cafe);
+    return NextResponse.json(cafe, { status: 200 });
   } catch (error) {
     console.log("[CAFE_POST]", error);
     return new NextResponse("Internal server error.", { status: 500 });

@@ -12,7 +12,7 @@ export async function GET(req: Request) {
       return { id: doc.id, ...doc.data() };
     });
 
-    return NextResponse.json(cafes);
+    return NextResponse.json(cafes, { status: 200 });
   } catch (error) {
     console.log("[CAFES_GET]", error);
     return new NextResponse("Internal server error.", { status: 500 });

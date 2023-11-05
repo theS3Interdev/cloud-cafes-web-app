@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Coffee } from "lucide-react";
 import axios from "axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 
 import { Button } from "@/components/ui/button";
@@ -33,7 +33,7 @@ const formSchema = z.object({
 });
 
 export const CreateCoffeeHouse = () => {
-  const [loading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
 
   const title = "Create a Cloud Coffee House";
 
@@ -48,22 +48,21 @@ export const CreateCoffeeHouse = () => {
     },
   });
 
-  /* define the submit handler */
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    try {
-      setLoading(true);
+  /* define the mutation */
+  const { mutate: createCafe, isPending: createCafePending } = useMutation({
+    mutationFn: async (values: z.infer<typeof formSchema>) =>
+      await axios.post("/api/cafes/create", values),
+    onSuccess: () => {
+      toast.success("Cloud coffee house created.");
 
-      console.log(values);
+      queryClient.invalidateQueries({ queryKey: ["cafes"] });
 
       form.reset();
-
-      toast.success("Cloud coffee house created.");
-    } catch (error: any) {
-      toast.error("An unknown error has occurred.");
-    } finally {
-      setLoading(false);
-    }
-  };
+    },
+    onError: (error) => {
+      toast.error(`The following error has occurred: ${error.message}`);
+    },
+  });
 
   return (
     <div>
@@ -72,7 +71,7 @@ export const CreateCoffeeHouse = () => {
       <div className="flex items-center justify-between">
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
+            onSubmit={form.handleSubmit((values) => createCafe(values))}
             className="my-5 w-full space-y-8"
           >
             <div className="mt-4 grid grid-cols-1 gap-5 md:grid-cols-2">
@@ -84,7 +83,7 @@ export const CreateCoffeeHouse = () => {
                     <FormLabel>Name</FormLabel>
                     <FormControl>
                       <Input
-                        disabled={loading}
+                        disabled={createCafePending}
                         placeholder="Cloud coffee house name"
                         {...field}
                       />
@@ -102,7 +101,7 @@ export const CreateCoffeeHouse = () => {
                     <FormLabel>City</FormLabel>
                     <FormControl>
                       <Input
-                        disabled={loading}
+                        disabled={createCafePending}
                         placeholder="Cloud coffee house city"
                         {...field}
                       />
@@ -112,7 +111,12 @@ export const CreateCoffeeHouse = () => {
                 )}
               />
             </div>
-            <Button disabled={loading} className="ml-auto" type="submit">
+            <Button
+              disabled={createCafePending}
+              className="ml-auto"
+              type="submit"
+              onClick={() => createCafe}
+            >
               <Coffee className="mr-2 h-4 w-4" />
               Create Cloud Coffee House
             </Button>

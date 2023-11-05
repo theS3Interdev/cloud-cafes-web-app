@@ -1,5 +1,5 @@
 export type Cafes = {
   id: string;
-  name: string;
-  city: string;
+  name?: string;
+  city?: string;
 };

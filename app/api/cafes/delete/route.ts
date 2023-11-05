@@ -2,13 +2,13 @@ import { NextResponse } from "next/server";
 
 import { db, deleteDoc, doc } from "@/lib/firebase/config";
 
-export async function DELETE(req: Request, id: string) {
+export async function POST(req: Request, body: { id: string }) {
   try {
-    const cafe = await deleteDoc(doc(db, "cafes", id));
+    await deleteDoc(doc(db, "cafes", body.id));
 
-    return NextResponse.json(cafe);
+    return NextResponse.json({ deleted: true }, { status: 204 });
   } catch (error) {
-    console.log("[CAFES_DELETE]", error);
+    console.log("[CAFES_POST_DELETE]", error);
     return new NextResponse("Internal server error.", { status: 500 });
   }
 }
