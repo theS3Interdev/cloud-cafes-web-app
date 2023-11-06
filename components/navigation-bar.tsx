@@ -5,8 +5,8 @@ import { NavigationBarActions } from "./navigation-bar-actions";
 
 export const NavigationBar = () => {
   return (
-    <header>
-      <nav className="border-b">
+    <div>
+      <div className="border-b">
         <Container>
           <div className="relative flex h-16 items-center justify-between px-3">
             <div className="flex items-center">
@@ -20,7 +20,7 @@ export const NavigationBar = () => {
             <NavigationBarActions />
           </div>
         </Container>
-      </nav>
-    </header>
+      </div>
+    </div>
   );
 };

@@ -3,18 +3,18 @@ import { Container } from "@/components/generic/container";
 import { CreateCoffeeHouse } from "@/components/generic/create-coffee-house";
 import { DisplayCoffeeHouse } from "@/components/generic/display-coffee-house";
 
-const Home = () => {
+const Dashboard = () => {
   return (
     <Container>
       <div className="mx-auto mt-5 max-w-4xl p-5">
-        <CreateCoffeeHouse />
+        {/* <CreateCoffeeHouse /> */}
 
         <Separator className="my-4" />
 
-        <DisplayCoffeeHouse />
+        {/* <DisplayCoffeeHouse /> */}
       </div>
     </Container>
   );
 };
 
-export default Home;
+export default Dashboard;
