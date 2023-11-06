@@ -1,15 +1,23 @@
 import { NextResponse } from "next/server";
+import { auth } from "@clerk/nextjs";
 
-import { collection, db, getDocs, orderBy, query } from "@/lib/firebase/config";
+import prismadb from "@/lib/utils/prismadb";
 
 export async function GET(req: Request) {
   try {
-    const cafesQuery = await query(collection(db, "cafes"), orderBy("name"));
+    const { userId } = auth();
 
-    const cafesSnapshot = await getDocs(cafesQuery);
+    if (!userId) {
+      return new NextResponse("Unauthenticated.", { status: 401 });
+    }
 
-    const cafes = cafesSnapshot.docs.map((doc) => {
-      return { id: doc.id, ...doc.data() };
+    const cafes = await prismadb.cafe.findMany({
+      where: {
+        userId: userId,
+      },
+      orderBy: {
+        name: "asc",
+      },
     });
 
     return NextResponse.json(cafes, { status: 200 });

@@ -12,7 +12,7 @@ export const DeleteButton = ({ id }: Cafes) => {
 
   /* define the mutation */
   const { mutate: deleteCafe, isPending: deleteCafePending } = useMutation({
-    mutationFn: async () => await axios.post("/api/cafes/delete", { id: id }),
+    mutationFn: async () => await axios.post("api/cafes/delete", { id: id }),
     onSuccess: () => {
       toast.success("Cloud coffee house deleted.");
 
@@ -28,7 +28,7 @@ export const DeleteButton = ({ id }: Cafes) => {
       <Button
         variant="destructive"
         disabled={deleteCafePending}
-        onClick={() => deleteCafe}
+        onClick={() => deleteCafe()}
       >
         <Trash2 className="mr-2 h-4 w-4" />
         Delete

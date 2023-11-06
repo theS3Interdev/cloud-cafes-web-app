@@ -7,11 +7,11 @@ const Dashboard = () => {
   return (
     <Container>
       <div className="mx-auto mt-5 max-w-4xl p-5">
-        {/* <CreateCoffeeHouse /> */}
+        <CreateCoffeeHouse />
 
         <Separator className="my-4" />
 
-        {/* <DisplayCoffeeHouse /> */}
+        <DisplayCoffeeHouse />
       </div>
     </Container>
   );
