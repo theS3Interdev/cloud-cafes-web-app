@@ -11,7 +11,7 @@ export const DisplayCoffeeHouse = () => {
   const { data, isPending, isError } = useQuery({
     queryKey: ["cafes"],
     queryFn: async () => {
-      const { data } = await axios.get("/api/cafes/fetch");
+      const { data } = await axios.get("/api/cafes/read");
       return data as Cafes[];
     },
   });
