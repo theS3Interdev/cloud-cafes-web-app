@@ -1,3 +1,3 @@
 # Cloud Cafe House
 
-Getting started with Firebase, Next.JS and Tailwind CSS.
+Getting started with Postgres, Prisma, Next.JS and Tailwind CSS.
