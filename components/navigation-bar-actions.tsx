@@ -42,7 +42,7 @@ export const NavigationBarActions = () => {
       </div>
 
       <div className="flex w-full justify-end">
-        <UserButton afterSignOutUrl="/sign-in" />
+        <UserButton afterSignOutUrl="/" />
       </div>
     </div>
   );

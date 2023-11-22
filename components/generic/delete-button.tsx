@@ -16,7 +16,7 @@ export const DeleteButton = ({ id }: Cafes) => {
   const { mutate: deleteCafe, isPending: deleteCafePending } = useMutation({
     mutationFn: async () => await axios.post("api/cafes/delete", { id: id }),
     onSuccess: () => {
-      toast.success("Cloud coffee house deleted.");
+      toast.success("Cloud cafe deleted.");
 
       queryClient.invalidateQueries({ queryKey: ["cafes"] });
     },

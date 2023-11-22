@@ -35,9 +35,9 @@ const formSchema = z.object({
 export const CreateCoffeeHouse = () => {
   const queryClient = useQueryClient();
 
-  const title = "Create a Cloud Coffee House";
+  const title = "Create a Cloud Cafe";
 
-  const description = "Create the  desired cloud coffee house";
+  const description = "Create the  desired cloud cafe";
 
   /* define the form */
   const form = useForm<z.infer<typeof formSchema>>({
@@ -53,7 +53,7 @@ export const CreateCoffeeHouse = () => {
     mutationFn: async (values: z.infer<typeof formSchema>) =>
       await axios.post("/api/cafes/create", values),
     onSuccess: () => {
-      toast.success("Cloud coffee house created.");
+      toast.success("Cloud cafe created.");
 
       queryClient.invalidateQueries({ queryKey: ["cafes"] });
 
@@ -84,7 +84,7 @@ export const CreateCoffeeHouse = () => {
                     <FormControl>
                       <Input
                         disabled={createCafePending}
-                        placeholder="Cloud coffee house name"
+                        placeholder="Cloud cafe house name"
                         {...field}
                       />
                     </FormControl>
@@ -102,7 +102,7 @@ export const CreateCoffeeHouse = () => {
                     <FormControl>
                       <Input
                         disabled={createCafePending}
-                        placeholder="Cloud coffee house city"
+                        placeholder="Cloud cafe house city"
                         {...field}
                       />
                     </FormControl>
@@ -118,7 +118,7 @@ export const CreateCoffeeHouse = () => {
               onClick={() => createCafe}
             >
               <Coffee className="mr-2 h-4 w-4" />
-              Create Cloud Coffee House
+              Create Cloud Cafe
             </Button>
           </form>
         </Form>

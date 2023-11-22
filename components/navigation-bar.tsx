@@ -12,7 +12,7 @@ export const NavigationBar = () => {
             <div className="flex items-center">
               <Link href="/" className="mr-1 lg:mr-3">
                 <p className="font-montserrat text-xl font-bold tracking-wide">
-                  Cloud Cafe House
+                  Cloud Cafes
                 </p>
               </Link>
             </div>

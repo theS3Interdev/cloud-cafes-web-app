@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     icon: "/logo.png",
     shortcut: "/logo/png",
   },
-  title: "Cloud Coffee House",
+  title: "Cloud Cafes",
   description: "Postgres, Next.JS, Tailwind CSS and Shadcn UI sample project.",
 };
 
