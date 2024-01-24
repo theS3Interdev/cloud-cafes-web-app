@@ -13,10 +13,6 @@ type Children = {
 };
 
 export const metadata: Metadata = {
-  icons: {
-    icon: "/logo.png",
-    shortcut: "/logo/png",
-  },
   title: "Cloud Cafes",
   description: "Postgres, Next.JS, Tailwind CSS and Shadcn UI sample project.",
 };
