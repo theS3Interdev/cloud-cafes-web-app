@@ -1,3 +1,3 @@
 # Cloud Cafe House
 
-Getting started with Postgres, Prisma, Next.JS and Tailwind CSS.
+Getting started with MongoDB, Prisma, Next.JS and Tailwind CSS.
